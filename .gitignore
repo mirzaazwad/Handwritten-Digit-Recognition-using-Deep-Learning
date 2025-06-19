@@ -9,6 +9,8 @@ __pycache__/
 .vscode
 .idea
 
+tracing/*.txt
+
 # Distribution / packaging
 .Python
 build/
