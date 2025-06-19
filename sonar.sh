@@ -1,2 +1,0 @@
-sonar-scanner   -Dsonar.projectKey=mirzaazwad_Handwritten-Digit-Recognition-using-Deep-Learning   -Dsonar.sources=.   
--Dsonar.host.url=http://localhost:9000   -Dsonar.token=sqp_55071ac56ee9ef1586c7263f0d385d2d1b72d92e

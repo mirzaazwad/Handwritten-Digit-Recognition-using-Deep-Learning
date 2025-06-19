@@ -6,17 +6,19 @@ This project applies various supervised learning algorithms (KNN, SVM, Random Fo
 
 ## 📚 Table of Contents
 
-* [🔧 Requirements](#-requirements)
-* [🚀 Setup Instructions](#-setup-instructions)
-* [🧪 Running Models](#-running-models)
-* [📈 Code Coverage](#-code-coverage)
+- [🔧 Requirements](#-requirements)
+- [🚀 Setup Instructions](#-setup-instructions)
+- [🧪 Running Models](#-running-models)
+- [📈 Code Coverage](#-code-coverage)
 
-  * [Usage](#usage)
-  * [Examples](#examples)
-  * [Output](#output)
-  * [Troubleshooting](#troubleshooting)
-* [📂 Project Structure](#-project-structure)
-* [📎 References](#-references)
+  - [Usage](#usage)
+  - [Examples](#examples)
+  - [Output](#output)
+  - [Troubleshooting](#troubleshooting)
+
+- [📂 Project Structure](#-project-structure)
+- [📈 SonarQube](#-sonarqube)
+- [📎 References](#-references)
 
 ---
 
@@ -24,19 +26,19 @@ This project applies various supervised learning algorithms (KNN, SVM, Random Fo
 
 This project has been tested with:
 
-* Python 3.9
-* Conda
-* scikit-learn
-* numpy (with MKL on Windows)
-* matplotlib
-* keras
-* tensorflow
-* opencv-python
-* pytest
-* pytest-cov
-* sonar-scanner
-* scalene
-* codecov
+- Python 3.9
+- Conda
+- scikit-learn
+- numpy (with MKL on Windows)
+- matplotlib
+- keras
+- tensorflow
+- opencv-python
+- pytest
+- pytest-cov
+- sonar-scanner
+- scalene
+- codecov
 
 To install dependencies automatically, follow the setup instructions below.
 
@@ -106,7 +108,7 @@ python -m src.cnn.cnn
 
 ## 📈 Code Coverage
 
-The run\_cov.sh script provides an easy way to run model-specific unit tests and generate coverage reports using pytest and pytest-cov.
+The run_cov.sh script provides an easy way to run model-specific unit tests and generate coverage reports using pytest and pytest-cov.
 
 ### Usage
 
@@ -116,8 +118,8 @@ The run\_cov.sh script provides an easy way to run model-specific unit tests and
 
 Where:
 
-* <model> is one of: svm, rfc, knn, cnn
-* \[additional pytest args] are optional flags passed to pytest
+- <model> is one of: svm, rfc, knn, cnn
+- \[additional pytest args] are optional flags passed to pytest
 
 ### Examples
 
@@ -139,29 +141,35 @@ Filter tests for KNN using a keyword:
 ./run_cov.sh knn -k predict
 ```
 
+Run all tests and generate combined coverage report:
+
+```bash
+./run_cov.sh all
+```
+
 ### Output
 
 Each run produces:
 
-* 📜 Terminal coverage summary
-* 🌐 HTML report: coverage/<model>/index.html
-* 📄 XML report: coverage/<model>/coverage.xml
+- 📜 Terminal coverage summary
+- 🌐 HTML report: coverage/<model>/index.html
+- 📄 XML report: coverage/<model>/coverage.xml
 
 Example:
 
 coverage/
 ├── cnn/
-│   ├── index.html        ← Open in browser
-│   └── coverage.xml      ← For CI tools
+│ ├── index.html ← Open in browser
+│ └── coverage.xml ← For CI tools
 ├── knn/
 ├── rfc/
 └── svm/
 
 ### Troubleshooting
 
-* ❗ Make sure all modules inside src/ have **init**.py.
-* ❗ If ImportError occurs, ensure PYTHONPATH includes src/
-* ❗ If you renamed model folders or scripts, update the script accordingly.
+- ❗ Make sure all modules inside src/ have **init**.py.
+- ❗ If ImportError occurs, ensure PYTHONPATH includes src/
+- ❗ If you renamed model folders or scripts, update the script accordingly.
 
 Install dependencies for testing:
 
@@ -171,6 +179,16 @@ pip install pytest pytest-cov
 
 ---
 
+## 📈 SonarQube
+
+To run the SonarQube analysis you can use the following command in the project directory:
+
+```bash
+sonar-scanner   -Dsonar.projectKey=mirzaazwad_Handwritten-Digit-Recognition-using-Deep-Learning   -Dsonar.sources=.   -Dsonar.host.url=http://localhost:9000   -Dsonar.token=[your-token]
+```
+
+An example token for the local version is: sqp_55071ac56ee9ef1586c7263f0d385d2d1b72d92e
+
 ## 📂 Project Structure (Simplified)
 
 src/
@@ -178,9 +196,9 @@ src/
 ├── svm/
 ├── rfc/
 ├── cnn/
-│   ├── cnn\_classifier.py
-│   ├── neural\_network.py
-│   └── tests/
+│ ├── cnn_classifier.py
+│ ├── neural_network.py
+│ └── tests/
 └── loader/
 └── dataset/
 
@@ -188,5 +206,5 @@ src/
 
 ## 📎 References
 
-* MNIST Dataset: [http://yann.lecun.com/exdb/mnist/](http://yann.lecun.com/exdb/mnist/)
-* Original Deep Learning implementation: [anujdutt9 GitHub Repo](https://github.com/anujdutt9/Handwritten-Digit-Recognition-using-Deep-Learning)
+- MNIST Dataset: [http://yann.lecun.com/exdb/mnist/](http://yann.lecun.com/exdb/mnist/)
+- Original Deep Learning implementation: [anujdutt9 GitHub Repo](https://github.com/anujdutt9/Handwritten-Digit-Recognition-using-Deep-Learning)
