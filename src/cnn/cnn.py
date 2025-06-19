@@ -43,7 +43,7 @@ def save_model(model, path: str):
 
 
 def predict_and_display(model, test_img, test_labels, show=False):
-    rng = np.random.default_rng()
+    rng = np.random.default_rng(seed=42)
     for idx in rng.choice(len(test_labels), size=5):
         probs = model.predict(test_img[np.newaxis, idx])
         pred = probs.argmax(axis=1)[0]
