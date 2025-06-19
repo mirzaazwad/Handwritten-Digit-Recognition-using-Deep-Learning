@@ -9,7 +9,7 @@ from keras.layers.core import Dense
 
 class CNN:
     @staticmethod
-    def build(width, height, depth, total_classes, Saved_Weights_Path=None):
+    def build(width, height, depth, total_classes, save_weights_path=None):
         model = Sequential()
 
         # Conv2D signature: Conv2D(filters, kernel_size, ...)
@@ -31,6 +31,6 @@ class CNN:
         model.add(Dense(500, activation="relu"))
         model.add(Dense(total_classes, activation="softmax"))
 
-        if Saved_Weights_Path is not None:
-            model.load_weights(Saved_Weights_Path)
+        if save_weights_path is not None:
+            model.load_weights(save_weights_path)
         return model

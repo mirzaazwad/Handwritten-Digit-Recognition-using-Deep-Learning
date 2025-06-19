@@ -20,14 +20,14 @@ def load_data(dataset_dir: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.
 
 
 def train_and_pickle(
-    X_train: np.ndarray,
+    x_train: np.ndarray,
     y_train: np.ndarray,
     pickle_path: Union[str, Path],
     gamma: float = 0.1,
     kernel: str = "poly",
 ) -> Path:
     clf = svm.SVC(gamma=gamma, kernel=kernel)
-    clf.fit(X_train, y_train)
+    clf.fit(x_train, y_train)
 
     p = Path(pickle_path).expanduser().resolve()
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -36,8 +36,8 @@ def train_and_pickle(
     return p
 
 
-def evaluate(clf, X: np.ndarray, y: np.ndarray):
-    preds = clf.predict(X)
+def evaluate(clf, x: np.ndarray, y: np.ndarray):
+    preds = clf.predict(x)
     return accuracy_score(y, preds), confusion_matrix(y, preds), preds
 
 
@@ -59,15 +59,15 @@ def main(
     
     train_img, train_labels, test_img, test_labels = load_data(dataset_dir)
 
-    X_train, X_val, y_train, y_val = model_selection.train_test_split(
+    x_train, x_val, y_train, y_val = model_selection.train_test_split(
         train_img, train_labels, test_size=0.1, random_state=42
     )
 
-    model_file = train_and_pickle(X_train, y_train, pickle_path)
+    model_file = train_and_pickle(x_train, y_train, pickle_path)
     with model_file.open("rb") as f:
         clf = pickle.load(f)
 
-    val_acc, cm_val, _ = evaluate(clf, X_val, y_val)
+    val_acc, cm_val, _ = evaluate(clf, x_val, y_val)
     print("\nValidation accuracy:", val_acc)
     plot_cm(cm_val, "Confusion Matrix (Validation)")
 

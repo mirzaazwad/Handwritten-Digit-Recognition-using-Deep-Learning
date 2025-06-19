@@ -14,7 +14,7 @@ def load_data() -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     mnist_data = dataset.data.to_numpy().reshape((-1, 28, 28, 1))
     mnist_data = mnist_data / 255.0 
     labels = dataset.target.astype("int")
-    train_img, test_img, train_labels, test_labels = train_test_split(mnist_data, labels, test_size=0.1)
+    train_img, test_img, train_labels, test_labels = train_test_split(mnist_data, labels, test_size=0.1,random_state=42)
     return train_img, train_labels,test_img ,test_labels
 
 
@@ -32,7 +32,7 @@ def train_model(model, train_img, train_labels, batch_size=128, epochs=20):
 
 def evaluate_model(model, test_img, test_labels):
     print("Evaluating model...")
-    loss, accuracy = model.evaluate(test_img, test_labels, batch_size=128, verbose=1)
+    _, accuracy = model.evaluate(test_img, test_labels, batch_size=128, verbose=1)
     print(f"Accuracy: {accuracy:.2%}")
     return accuracy
 
@@ -43,7 +43,7 @@ def save_model(model, path: str):
 
 
 def predict_and_display(model, test_img, test_labels, show=False):
-    for idx in np.random.choice(len(test_labels), size=5):
+    for idx in np.random.Generator().choice(len(test_labels), size=5):
         probs = model.predict(test_img[np.newaxis, idx])
         pred = probs.argmax(axis=1)[0]
         true = np.argmax(test_labels[idx]) if test_labels.ndim > 1 else test_labels[idx]
