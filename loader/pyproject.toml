@@ -1,0 +1,13 @@
+[project]
+name = "loader"
+version = "1.0.0"
+description = "Data Loader for Handwritten Digit Recognition using Machine Learning and Deep Learning"
+authors = [
+  { name="Mirza Azwad", email="mirzaazwad@gmail.com" },
+]
+license = { text = "MIT" }
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+]

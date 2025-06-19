@@ -1,6 +1,0 @@
-projectKey=mirzaazwad_Handwritten-Digit-Recognition-using-Deep-Learning
-serverUrl=http://localhost:9000
-serverVersion=25.5.0.107428
-dashboardUrl=http://localhost:9000/dashboard?id=mirzaazwad_Handwritten-Digit-Recognition-using-Deep-Learning
-ceTaskId=3e6da5ae-f2de-46e9-8830-eaca6d8a052c
-ceTaskUrl=http://localhost:9000/api/ce/task?id=3e6da5ae-f2de-46e9-8830-eaca6d8a052c

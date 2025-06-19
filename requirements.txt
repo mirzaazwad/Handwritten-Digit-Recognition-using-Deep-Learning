@@ -6,7 +6,9 @@ certifi==2025.6.15
 charset-normalizer==3.4.2
 cloudpickle==3.1.1
 contourpy==1.3.0
+coverage==7.9.1
 cycler==0.12.1
+exceptiongroup==1.3.0
 flatbuffers==25.2.10
 fonttools==4.58.4
 gast==0.4.0
@@ -17,9 +19,12 @@ gprof2dot==2025.4.14
 graphviz==0.21
 grpcio==1.73.0
 h5py==3.14.0
+-e git+https://github.com/mirzaazwad/Handwritten-Digit-Recognition-using-Deep-Learning.git@8c0a92f219ff64405c81fc7d24d33d0844972c98#egg=Handwritten_Digit_Recognition_using_Deep_Learning
+-e git+https://github.com/mirzaazwad/Handwritten-Digit-Recognition-using-Deep-Learning.git@8c0a92f219ff64405c81fc7d24d33d0844972c98#egg=handwritten_digits
 idna==3.10
 importlib_metadata==8.7.0
 importlib_resources==6.5.2
+iniconfig==2.1.0
 jax==0.4.30
 jaxlib==0.4.30
 Jinja2==3.1.6
@@ -41,6 +46,7 @@ opt_einsum==3.4.0
 packaging==25.0
 pandas==2.3.0
 pillow==11.2.1
+pluggy==1.6.0
 protobuf==4.25.8
 psutil==7.0.0
 pyasn1==0.6.1
@@ -50,6 +56,8 @@ pydantic==2.11.7
 pydantic_core==2.33.2
 Pygments==2.19.1
 pyparsing==3.2.3
+pytest==8.4.1
+pytest-cov==6.2.1
 python-dateutil==2.9.0.post0
 pytz==2025.2
 requests==2.32.4
@@ -67,6 +75,7 @@ tensorflow-estimator==2.12.0
 tensorflow-io-gcs-filesystem==0.37.1
 termcolor==3.1.0
 threadpoolctl==3.6.0
+tomli==2.2.1
 typing-inspection==0.4.1
 typing_extensions==4.14.0
 tzdata==2025.2

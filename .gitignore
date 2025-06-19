@@ -10,6 +10,8 @@ __pycache__/
 .idea
 
 tracing/*.txt
+.scannerwork
+dump
 
 # Distribution / packaging
 .Python
