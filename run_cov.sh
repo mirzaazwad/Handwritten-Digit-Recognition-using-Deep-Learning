@@ -22,8 +22,8 @@ shift                                     # drop the model arg, pass the rest to
 
 
 if [[ "$MODEL" == "all" ]]; then
-HTML_DIR="coverage"
-XML_FILE="$HTML_DIR/coverage.xml"
+HTML_DIR="coverage/all"
+XML_FILE="coverage/coverage.xml"
 
 mkdir -p "$HTML_DIR"
   pytest \

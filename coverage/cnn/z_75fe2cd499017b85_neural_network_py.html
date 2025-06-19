@@ -65,7 +65,7 @@
             <a id="nextFileLink" class="nav" href="z_30bbf71ff0908460_conftest_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.9.1">coverage.py v7.9.1</a>,
-            created at 2025-06-20 04:29 +0600
+            created at 2025-06-20 05:16 +0600
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -91,7 +91,7 @@
     <p class="pln"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t"><span class="key">class</span> <span class="nam">CNN</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t">    <span class="op">@</span><span class="nam">staticmethod</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t">    <span class="key">def</span> <span class="nam">build</span><span class="op">(</span><span class="nam">width</span><span class="op">,</span> <span class="nam">height</span><span class="op">,</span> <span class="nam">depth</span><span class="op">,</span> <span class="nam">total_classes</span><span class="op">,</span> <span class="nam">Saved_Weights_Path</span><span class="op">=</span><span class="key">None</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t">    <span class="key">def</span> <span class="nam">build</span><span class="op">(</span><span class="nam">width</span><span class="op">,</span> <span class="nam">height</span><span class="op">,</span> <span class="nam">depth</span><span class="op">,</span> <span class="nam">total_classes</span><span class="op">,</span> <span class="nam">save_weights_path</span><span class="op">=</span><span class="key">None</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t13" href="#t13">13</a></span><span class="t">        <span class="nam">model</span> <span class="op">=</span> <span class="nam">Sequential</span><span class="op">(</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t">        <span class="com"># Conv2D signature: Conv2D(filters, kernel_size, ...)</span>&nbsp;</span><span class="r"></span></p>
@@ -113,8 +113,8 @@
     <p class="run"><span class="n"><a id="t31" href="#t31">31</a></span><span class="t">        <span class="nam">model</span><span class="op">.</span><span class="nam">add</span><span class="op">(</span><span class="nam">Dense</span><span class="op">(</span><span class="num">500</span><span class="op">,</span> <span class="nam">activation</span><span class="op">=</span><span class="str">"relu"</span><span class="op">)</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t32" href="#t32">32</a></span><span class="t">        <span class="nam">model</span><span class="op">.</span><span class="nam">add</span><span class="op">(</span><span class="nam">Dense</span><span class="op">(</span><span class="nam">total_classes</span><span class="op">,</span> <span class="nam">activation</span><span class="op">=</span><span class="str">"softmax"</span><span class="op">)</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t33" href="#t33">33</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t34" href="#t34">34</a></span><span class="t">        <span class="key">if</span> <span class="nam">Saved_Weights_Path</span> <span class="key">is</span> <span class="key">not</span> <span class="key">None</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="mis show_mis"><span class="n"><a id="t35" href="#t35">35</a></span><span class="t">            <span class="nam">model</span><span class="op">.</span><span class="nam">load_weights</span><span class="op">(</span><span class="nam">Saved_Weights_Path</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t34" href="#t34">34</a></span><span class="t">        <span class="key">if</span> <span class="nam">save_weights_path</span> <span class="key">is</span> <span class="key">not</span> <span class="key">None</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t35" href="#t35">35</a></span><span class="t">            <span class="nam">model</span><span class="op">.</span><span class="nam">load_weights</span><span class="op">(</span><span class="nam">save_weights_path</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t36" href="#t36">36</a></span><span class="t">        <span class="key">return</span> <span class="nam">model</span>&nbsp;</span><span class="r"></span></p>
 </main>
 <footer>
@@ -125,7 +125,7 @@
             <a class="nav" href="z_30bbf71ff0908460_conftest_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.9.1">coverage.py v7.9.1</a>,
-            created at 2025-06-20 04:29 +0600
+            created at 2025-06-20 05:16 +0600
         </p>
     </div>
 </footer>

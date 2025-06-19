@@ -20,7 +20,7 @@ def load_data() -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
 
 def build_model(save_weights_path: Optional[str] = None):
     sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-    clf = cnn.CNN.build(width=28, height=28, depth=1, total_classes=10, Saved_Weights_Path=save_weights_path)
+    clf = cnn.CNN.build(width=28, height=28, depth=1, total_classes=10, save_weights_path=save_weights_path)
     clf.compile(loss="categorical_crossentropy", optimizer=sgd, metrics=["accuracy"])
     return clf
 
@@ -43,7 +43,8 @@ def save_model(model, path: str):
 
 
 def predict_and_display(model, test_img, test_labels, show=False):
-    for idx in np.random.Generator().choice(len(test_labels), size=5):
+    rng = np.random.default_rng()
+    for idx in rng.choice(len(test_labels), size=5):
         probs = model.predict(test_img[np.newaxis, idx])
         pred = probs.argmax(axis=1)[0]
         true = np.argmax(test_labels[idx]) if test_labels.ndim > 1 else test_labels[idx]
