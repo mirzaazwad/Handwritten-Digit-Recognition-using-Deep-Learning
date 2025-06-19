@@ -9,9 +9,10 @@ __pycache__/
 .vscode
 .idea
 
-tracing/*.txt
+**/tracing/*.txt
 .scannerwork
 dump
+*-ubyte
 
 # Distribution / packaging
 .Python

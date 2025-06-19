@@ -1,135 +1,192 @@
-# Handwritten Digit Recognition using Machine Learning and Deep Learning
+# 🧠 Handwritten Digit Recognition using Machine Learning and Deep Learning
 
-## Published Paper
+This project applies various supervised learning algorithms (KNN, SVM, Random Forest) and deep learning (CNN using Keras/TensorFlow) to recognize handwritten digits from the MNIST dataset. This was done as an attempt to integrate Software Maintenance practices into a Machine Learning project as a coursework for SWE 4802: Software Maintenance at Islamic University of Technology. The course was conducted by [Asst. Professor Lutfun Nahar Lota](https://cse.iutoic-dhaka.edu/profile/lota/education) and [Md. Rafid Haque, Lecturer](https://cse.iutoic-dhaka.edu/profile/rafidhaque/education)
 
-[IJARCET-VOL-6-ISSUE-7-990-997](http://ijarcet.org/wp-content/uploads/IJARCET-VOL-6-ISSUE-7-990-997.pdf)
+---
 
-# Requirements
+## 📚 Table of Contents
 
-- Python 3.9
-- Scikit-Learn (latest version)
-- Numpy (+ mkl for Windows)
-- Matplotlib
+* [🔧 Requirements](#-requirements)
+* [🚀 Setup Instructions](#-setup-instructions)
+* [🧪 Running Models](#-running-models)
+* [📈 Code Coverage](#-code-coverage)
 
-# Usage
+  * [Usage](#usage)
+  * [Examples](#examples)
+  * [Output](#output)
+  * [Troubleshooting](#troubleshooting)
+* [📂 Project Structure](#-project-structure)
+* [📎 References](#-references)
 
-**1.** Download the four MNIST dataset files from this link:
+---
 
+## 🔧 Requirements
+
+This project has been tested with:
+
+* Python 3.9
+* Conda
+* scikit-learn
+* numpy (with MKL on Windows)
+* matplotlib
+* keras
+* tensorflow
+* opencv-python
+* pytest
+* pytest-cov
+* sonar-scanner
+* scalene
+* codecov
+
+To install dependencies automatically, follow the setup instructions below.
+
+---
+
+## 🚀 Setup Instructions
+
+1. 📥 Clone the repository:
+
+```bash
+git clone <your-repo-url>
+cd Handwritten-Digit-Recognition-using-Deep-Learning
 ```
+
+2. 🐍 Create the Conda environment:
+
+```bash
+conda env create -f environment.yml
+```
+
+3. ✅ Activate the environment:
+
+```bash
+conda activate swe4802
+```
+
+4. 📦 Download the MNIST dataset files:
+
+```bash
 curl -O http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
 curl -O http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
 curl -O http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
 curl -O http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
 ```
 
-**Alternatively, you can download the [dataset from here](https://github.com/anujdutt9/Handwritten-Digit-Recognition-using-Deep-Learning/blob/master/dataset.zip), unzip the files and place them in the respected folders.**
-
-**2.** Unzip and place the files in the dataset folder inside the MNIST_Dataset_Loader folder under each ML Algorithm folder i.e :
+5. 📂 Unzip and place the files in:
 
 ```
-KNN
-|_ MNIST_Dataset_Loader
-   |_ dataset
-      |_ train-images-idx3-ubyte
-      |_ train-labels-idx1-ubyte
-      |_ t10k-images-idx3-ubyte
-      |_ t10k-labels-idx1-ubyte
+loader/
+└── dataset/
+    ├── train-images-idx3-ubyte
+    ├── train-labels-idx1-ubyte
+    ├── t10k-images-idx3-ubyte
+    └── t10k-labels-idx1-ubyte
 ```
 
-Do this for SVM and RFC folders and you should be good to go.
+6. 🔧 Install as editable package:
 
-**3.** To run the code, navigate to one of the directories for which you want to run the code using command prompt:
-
-```
-cd 1. K Nearest Neighbors/
+```bash
+pip install -e .
 ```
 
-and then run the file "knn.py" as follows:
+---
 
-```
-python knn.py
-```
+## 🧪 Running Models
 
-or
+You can run each model using:
 
-```
-python3 knn.py
-```
-
-This will run the code and all the print statements will be logged into the "summary.log" file.
-
-**NOTE: If you want to see the output to print on the Command prompt, just comment out line 16, 17, 18, 106 and 107 and hence you will get all the prints on the screen.**
-
-Alternatively, you can also use PyCharm to run the code and run the ".py" file in there.
-
-Repeat the steps for SVM and RFC code.
-
-**4.** To run the CNN code, you don't need to provide in the MNIST dataset as it'll be downloaded automatically.
-
-Just run the file as :
-
-```
-python CNN_MNIST.py
+```bash
+python -m src.knn.knn
+python -m src.svm.svm
+python -m src.rfc.rfc
+python -m src.cnn.cnn
 ```
 
-or
+---
 
-```
-python3 CNN_MNIST.py
-```
+## 📈 Code Coverage
 
-and it should run fine.
+The run\_cov.sh script provides an easy way to run model-specific unit tests and generate coverage reports using pytest and pytest-cov.
 
-**5.** If you want to save the CNN model weights after training, run the code with the following arguments:
+### Usage
 
-```
-python CNN_MNIST.py --save_model 1 --save_weights cnn_weights.hdf5
+```bash
+./run_cov.sh <model> [additional pytest args]
 ```
 
-or
+Where:
 
-```
-python3 CNN_MNIST.py --save_model 1 --save_weights cnn_weights.hdf5
-```
+* <model> is one of: svm, rfc, knn, cnn
+* \[additional pytest args] are optional flags passed to pytest
 
-and it should save the model weights in the same directory.
+### Examples
 
-**6.** To load the saved model weights and avoid the training time again, use the following command:
+Run coverage for the CNN model:
 
-```
-python CNN_MNIST.py --load_model 1 --save_weights cnn_weights.hdf5
-```
-
-or
-
-```
-python3 CNN_MNIST.py --load_model 1 --save_weights cnn_weights.hdf5
+```bash
+./run_cov.sh cnn
 ```
 
-and it should load the model and show the Outputs.
+Run tests for SVM with verbose output:
 
-## Accuracy using Machine Learning Algorithms:
-
-i) K Nearest Neighbors: 96.67%
-
-ii) SVM: 97.91%
-
-iii) Random Forest Classifier: 96.82%
-
-## Accuracy using Deep Neural Networks:
-
-i) Three Layer Convolutional Neural Network using Tensorflow: 99.70%
-
-ii) Three Layer Convolutional Neural Network using Keras and Theano: 98.75%
-
-**All code written in Python 3.5. Code executed on Intel Xeon Processor / AWS EC2 Server.**
-
-## Video Link:
-
-```
-https://www.youtube.com/watch?v=7kpYpmw5FfE
+```bash
+./run_cov.sh svm -v
 ```
 
-## Test Images Classification Output:
+Filter tests for KNN using a keyword:
 
-![Output a1](Outputs/output.png "Output a1")
+```bash
+./run_cov.sh knn -k predict
+```
+
+### Output
+
+Each run produces:
+
+* 📜 Terminal coverage summary
+* 🌐 HTML report: coverage/<model>/index.html
+* 📄 XML report: coverage/<model>/coverage.xml
+
+Example:
+
+coverage/
+├── cnn/
+│   ├── index.html        ← Open in browser
+│   └── coverage.xml      ← For CI tools
+├── knn/
+├── rfc/
+└── svm/
+
+### Troubleshooting
+
+* ❗ Make sure all modules inside src/ have **init**.py.
+* ❗ If ImportError occurs, ensure PYTHONPATH includes src/
+* ❗ If you renamed model folders or scripts, update the script accordingly.
+
+Install dependencies for testing:
+
+```bash
+pip install pytest pytest-cov
+```
+
+---
+
+## 📂 Project Structure (Simplified)
+
+src/
+├── knn/
+├── svm/
+├── rfc/
+├── cnn/
+│   ├── cnn\_classifier.py
+│   ├── neural\_network.py
+│   └── tests/
+└── loader/
+└── dataset/
+
+---
+
+## 📎 References
+
+* MNIST Dataset: [http://yann.lecun.com/exdb/mnist/](http://yann.lecun.com/exdb/mnist/)
+* Original Deep Learning implementation: [anujdutt9 GitHub Repo](https://github.com/anujdutt9/Handwritten-Digit-Recognition-using-Deep-Learning)
