@@ -4,21 +4,21 @@ from pathlib import Path
 from typing import Tuple, Optional
 from keras.utils import np_utils
 from keras.optimizers import SGD
-from keras.datasets import mnist
+from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
 from .nn import neural_network as cnn
 
 
 def load_data() -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    print("Loading MNIST dataset...")
-    (train_img, train_labels), (test_img, test_labels) = mnist.load_data()
-    train_img = train_img.reshape(-1, 28, 28, 1) / 255.0
-    test_img = test_img.reshape(-1, 28, 28, 1) / 255.0
-    return train_img, train_labels, test_img, test_labels
+    dataset = fetch_openml('mnist_784')
+    mnist_data = dataset.data.to_numpy().reshape((-1, 28, 28, 1))
+    mnist_data = mnist_data / 255.0 
+    labels = dataset.target.astype("int")
+    train_img, test_img, train_labels, test_labels = train_test_split(mnist_data, labels, test_size=0.1)
+    return train_img, train_labels,test_img ,test_labels
 
 
 def build_model(save_weights_path: Optional[str] = None):
-    print("Compiling CNN model...")
     sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
     clf = cnn.CNN.build(width=28, height=28, depth=1, total_classes=10, Saved_Weights_Path=save_weights_path)
     clf.compile(loss="categorical_crossentropy", optimizer=sgd, metrics=["accuracy"])
@@ -43,7 +43,6 @@ def save_model(model, path: str):
 
 
 def predict_and_display(model, test_img, test_labels, show=False):
-    print("Predicting sample images...")
     for idx in np.random.choice(len(test_labels), size=5):
         probs = model.predict(test_img[np.newaxis, idx])
         pred = probs.argmax(axis=1)[0]
@@ -60,9 +59,8 @@ def predict_and_display(model, test_img, test_labels, show=False):
 
 
 def main(save_model_flag=-1, load_model_flag=-1, save_weights_path="cnn_model.h5"):
-    train_img, test_img, train_labels, test_labels = load_data()
+    train_img, train_labels,test_img ,test_labels = load_data()
 
-    # One-hot encode
     train_labels_cat = np_utils.to_categorical(train_labels, 10)
     test_labels_cat = np_utils.to_categorical(test_labels, 10)
 
