@@ -22,11 +22,12 @@ print('Loading MNIST Dataset...')
 dataset = fetch_openml('mnist_784')
 
 # Read the MNIST data as array of 784 pixels and convert to 28x28 image matrix 
-mnist_data = dataset.data.reshape((dataset.data.shape[0], 28, 28))
-mnist_data = mnist_data[:, np.newaxis, :, :]
+mnist_data = dataset.data.to_numpy().reshape((-1, 28, 28, 1))  # (N, 28, 28, 1)
+mnist_data = mnist_data / 255.0  # normalize here
 
 # Divide data into testing and training sets.
-train_img, test_img, train_labels, test_labels = train_test_split(mnist_data/255.0, dataset.target.astype("int"), test_size=0.1)
+train_img, test_img, train_labels, test_labels = train_test_split(
+    mnist_data, dataset.target.astype("int"), test_size=0.1)
 
 # Now each image rows and columns are of 28x28 matrix type.
 img_rows, img_columns = 28, 28

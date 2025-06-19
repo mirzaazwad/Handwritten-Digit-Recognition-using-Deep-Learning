@@ -1,15 +1,15 @@
 # Handwritten Digit Recognition using Machine Learning and Deep Learning
 
-## Published Paper 
+## Published Paper
 
 [IJARCET-VOL-6-ISSUE-7-990-997](http://ijarcet.org/wp-content/uploads/IJARCET-VOL-6-ISSUE-7-990-997.pdf)
 
 # Requirements
 
-* Python 3.5 +
-* Scikit-Learn (latest version)
-* Numpy (+ mkl for Windows)
-* Matplotlib
+- Python 3.9
+- Scikit-Learn (latest version)
+- Numpy (+ mkl for Windows)
+- Matplotlib
 
 # Usage
 
@@ -50,7 +50,7 @@ and then run the file "knn.py" as follows:
 python knn.py
 ```
 
-or 
+or
 
 ```
 python3 knn.py
@@ -78,7 +78,7 @@ or
 python3 CNN_MNIST.py
 ```
 
-and it should run fine. 
+and it should run fine.
 
 **5.** If you want to save the CNN model weights after training, run the code with the following arguments:
 
@@ -86,7 +86,7 @@ and it should run fine.
 python CNN_MNIST.py --save_model 1 --save_weights cnn_weights.hdf5
 ```
 
-or 
+or
 
 ```
 python3 CNN_MNIST.py --save_model 1 --save_weights cnn_weights.hdf5
@@ -110,26 +110,26 @@ and it should load the model and show the Outputs.
 
 ## Accuracy using Machine Learning Algorithms:
 
-i)	 K Nearest Neighbors: 96.67%
+i) K Nearest Neighbors: 96.67%
 
-ii)	 SVM:	97.91%
+ii) SVM: 97.91%
 
-iii) Random Forest Classifier:	96.82%
-
+iii) Random Forest Classifier: 96.82%
 
 ## Accuracy using Deep Neural Networks:
 
-i)	Three Layer Convolutional Neural Network using Tensorflow:	99.70%
+i) Three Layer Convolutional Neural Network using Tensorflow: 99.70%
 
-ii)	Three Layer Convolutional Neural Network using Keras and Theano: 98.75%
+ii) Three Layer Convolutional Neural Network using Keras and Theano: 98.75%
 
 **All code written in Python 3.5. Code executed on Intel Xeon Processor / AWS EC2 Server.**
 
 ## Video Link:
+
 ```
 https://www.youtube.com/watch?v=7kpYpmw5FfE
 ```
 
 ## Test Images Classification Output:
 
-![Output a1](Outputs/output.png "Output a1")       
+![Output a1](Outputs/output.png "Output a1")
