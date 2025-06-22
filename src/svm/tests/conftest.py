@@ -1,41 +1,35 @@
+import sys
+from types import ModuleType
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pytest
+from loader.data_loader import DummyMNIST
+from src.svm.tests.fakes import FakeSVM
 
-class DummyMNIST:
-    def __init__(self, *_):
-        self._X = np.arange(10 * 784).reshape(10, 784).astype(np.uint8)
-        self._y = np.arange(10)
-
-    def load_training(self):
-        return self._X, self._y
-
-    def load_testing(self):
-        return self._X, self._y
-    
-class FakeSVM:
-    def __init__(self, *_, **__):
-        self._trained = False
-
-    def fit(self, X, y):
-        self.classes_ = np.unique(y)
-        self._trained = True
-        return self
-
-    def predict(self, X):
-        return np.zeros(X.shape[0], dtype=int)
 
 
 @pytest.fixture
 def tiny_mnist(monkeypatch):
-    import src.svm.svm as svm_mod
-    monkeypatch.setattr(svm_mod,"MNIST", DummyMNIST)
+    """
+    Replace the real MNIST loader used inside DataLoader with a 10-sample fake.
+    We patch the MNIST symbol inside *loader.data_loader*, because that's
+    where DataLoader looks it up.
+    """
+    import loader.data_loader as dl_mod          
+    from src.svm.tests.conftest import DummyMNIST  
+    monkeypatch.setattr(dl_mod, "MNIST", DummyMNIST, raising=True)
+
 
 @pytest.fixture
 def dummy_svm(monkeypatch):
+    """Patch the SVC symbol in the SVM module with FakeSVM."""
     import src.svm.svm as svm_mod
-    monkeypatch.setattr(svm_mod,"SVC", FakeSVM)
+
+    monkeypatch.setattr(svm_mod, "SVC", FakeSVM, raising=True)
+
 
 @pytest.fixture(autouse=True)
 def mute_matplotlib(monkeypatch):
-    import matplotlib.pyplot as plt
+    """Disable plt.show during tests."""
     monkeypatch.setattr(plt, "show", lambda *_, **__: None)

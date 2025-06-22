@@ -1,41 +1,35 @@
+import sys
+from types import ModuleType
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pytest
+from loader.data_loader import DummyMNIST
+from src.rfc.tests.fakes import FakeRFC
 
-class DummyMNIST:
-    def __init__(self, *_):
-        self._X = np.arange(10 * 784).reshape(10, 784).astype(np.uint8)
-        self._y = np.arange(10)
 
-    def load_training(self):
-        return self._X, self._y
-
-    def load_testing(self):
-        return self._X, self._y
-    
-class FakeRFC:
-    def __init__(self, *_, **__):
-        self._trained = False
-
-    def fit(self, X, y):
-        self.classes_ = np.unique(y)
-        self._trained = True
-        return self
-
-    def predict(self, X):
-        return np.zeros(X.shape[0], dtype=int)
 
 
 @pytest.fixture
 def tiny_mnist(monkeypatch):
-    import src.rfc.rfc as rfc_mod
-    monkeypatch.setattr(rfc_mod,"MNIST", DummyMNIST)
+    """
+    Replace the real MNIST loader used inside DataLoader with a 10-sample fake.
+    We patch the MNIST symbol inside *loader.data_loader*, because that's
+    where DataLoader looks it up.
+    """
+    import loader.data_loader as dl_mod          
+    from src.rfc.tests.conftest import DummyMNIST  
+    monkeypatch.setattr(dl_mod, "MNIST", DummyMNIST, raising=True)
+
 
 @pytest.fixture
 def dummy_rfc(monkeypatch):
     import src.rfc.rfc as rfc_mod
-    monkeypatch.setattr(rfc_mod,"RandomForestClassifier", FakeRFC)
+
+    monkeypatch.setattr(rfc_mod, "RandomForestClassifier", FakeRFC, raising=True)
+
 
 @pytest.fixture(autouse=True)
 def mute_matplotlib(monkeypatch):
-    import matplotlib.pyplot as plt
+    """Disable plt.show during tests."""
     monkeypatch.setattr(plt, "show", lambda *_, **__: None)
