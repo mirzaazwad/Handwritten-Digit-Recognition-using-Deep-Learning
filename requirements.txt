@@ -1,5 +1,6 @@
 absl-py==2.3.0
 annotated-types==0.7.0
+astroid @ file:///croot/astroid_1736455921794/work
 astunparse==1.6.3
 cachetools==5.5.2
 certifi==2025.6.15
@@ -8,6 +9,7 @@ cloudpickle==3.1.1
 contourpy==1.3.0
 coverage==7.9.1
 cycler==0.12.1
+dill @ file:///croot/dill_1715094664823/work
 exceptiongroup==1.3.0
 flatbuffers==25.2.10
 fonttools==4.58.4
@@ -19,12 +21,13 @@ gprof2dot==2025.4.14
 graphviz==0.21
 grpcio==1.73.0
 h5py==3.14.0
--e git+https://github.com/mirzaazwad/Handwritten-Digit-Recognition-using-Deep-Learning.git@8c0a92f219ff64405c81fc7d24d33d0844972c98#egg=Handwritten_Digit_Recognition_using_Deep_Learning
--e git+https://github.com/mirzaazwad/Handwritten-Digit-Recognition-using-Deep-Learning.git@8c0a92f219ff64405c81fc7d24d33d0844972c98#egg=handwritten_digits
+-e git+https://github.com/mirzaazwad/Handwritten-Digit-Recognition-using-Deep-Learning.git@c2153a3f7f4453fda2498bb3fe88246d06eab523#egg=Handwritten_Digit_Recognition_using_Deep_Learning
+-e git+https://github.com/mirzaazwad/Handwritten-Digit-Recognition-using-Deep-Learning.git@c2153a3f7f4453fda2498bb3fe88246d06eab523#egg=handwritten_digits
 idna==3.10
 importlib_metadata==8.7.0
 importlib_resources==6.5.2
 iniconfig==2.1.0
+isort @ file:///croot/isort_1741284882758/work
 jax==0.4.30
 jaxlib==0.4.30
 Jinja2==3.1.6
@@ -36,6 +39,7 @@ Markdown==3.8.1
 markdown-it-py==3.0.0
 MarkupSafe==3.0.2
 matplotlib==3.9.4
+mccabe @ file:///opt/conda/conda-bld/mccabe_1644221741721/work
 mdurl==0.1.2
 ml_dtypes==0.5.1
 numpy==1.24.3
@@ -46,15 +50,18 @@ opt_einsum==3.4.0
 packaging==25.0
 pandas==2.3.0
 pillow==11.2.1
+platformdirs @ file:///croot/platformdirs_1744273042065/work
 pluggy==1.6.0
 protobuf==4.25.8
 psutil==7.0.0
+py2puml==0.10.0
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pycallgraph2==1.1.3
 pydantic==2.11.7
 pydantic_core==2.33.2
 Pygments==2.19.1
+pylint @ file:///croot/pylint_1743709189542/work
 pyparsing==3.2.3
 pytest==8.4.1
 pytest-cov==6.2.1
@@ -75,9 +82,10 @@ tensorflow-estimator==2.12.0
 tensorflow-io-gcs-filesystem==0.37.1
 termcolor==3.1.0
 threadpoolctl==3.6.0
-tomli==2.2.1
+tomli @ file:///opt/conda/conda-bld/tomli_1657175507142/work
+tomlkit @ file:///croot/tomlkit_1728650307440/work
 typing-inspection==0.4.1
-typing_extensions==4.14.0
+typing_extensions @ file:///croot/typing_extensions_1734714854207/work
 tzdata==2025.2
 urllib3==2.5.0
 Werkzeug==3.1.3
